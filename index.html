@@ -3,207 +3,662 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pixel & Paper Studios — design templates, brushes, and creative guides for designers and illustrators. Visit our Gumroad products to learn more.">
-    <link rel="canonical" href="https://gumroad.com/pixelandpaperstudios">
-    <title>Pixel & Paper Studios — Gumroad</title>
+    <title>Pixel & Paper Studios</title>
     <style>
-        :root{
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
-            --secondary:#ec4899;
-            --accent:#f59e0b;
-            --bg:#ffffff;
-            --surface:#f9fafb;
-            --muted:#6b7280;
-            --text:#0f172a;
-            --border:#e5e7eb;
-            --radius:12px;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --bg-light: #ffffff;
+            --bg-secondary-light: #f9fafb;
+            --text-light: #1f2937;
+            --text-secondary-light: #6b7280;
+            --border-light: #e5e7eb;
+            --bg-dark: #0f172a;
+            --bg-secondary-dark: #1e293b;
+            --text-dark: #f1f5f9;
+            --text-secondary-dark: #cbd5e1;
+            --border-dark: #334155;
         }
 
-        [data-theme="dark"]{
-            --bg:#0b1220;
-            --surface:#0f172a;
-            --muted:#cbd5e1;
-            --text:#e6eef8;
-            --border:#233044;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
         }
 
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5;
-            transition:background-color .25s,color .25s;
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
         }
 
-        .container{max-width:1100px;margin:0 auto;padding:2rem}
+        /* Header & Navigation */
+        header {
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
 
-        header{background:var(--surface);border-bottom:1px solid var(--border);backdrop-filter: blur(6px);position:sticky;top:0;z-index:30}
-        .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem}
-        .brand{font-weight:800;font-size:1.25rem;letter-spacing:-0.5px;background:linear-gradient(90deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent}
-        .nav-links{display:flex;gap:1rem;align-items:center}
-        .nav-links a{color:var(--text);text-decoration:none;font-weight:600}
-        .theme-btn{background:transparent;border:1px solid var(--border);padding:8px;border-radius:999px;cursor:pointer;font-size:16px}
+        body.dark-mode header {
+            background: var(--bg-secondary-dark);
+            border-bottom-color: var(--border-dark);
+        }
 
-        .hero{padding:4rem 1rem;text-align:center}
-        .hero h1{font-size:clamp(2rem,5vw,3.25rem);margin:0 0 .5rem;line-height:1.05}
-        .hero p{max-width:720px;margin:.5rem auto 1.5rem;color:var(--muted)}
-        .cta{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
-        .btn{display:inline-block;padding:.75rem 1.25rem;border-radius:10px;font-weight:700;text-decoration:none;border:none;cursor:pointer}
-        .btn-primary{background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:white}
-        .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        /* email follow card */
-        .card{background:var(--surface);border:1px solid var(--border);padding:1.25rem;border-radius:var(--radius);max-width:680px;margin:1.75rem auto}
-        .card h3{margin:0 0 .5rem}
-        .form-row{display:flex;gap:.5rem;flex-wrap:wrap}
-        .form-row input[type="email"]{flex:1;padding:.75rem;border-radius:10px;border:1px solid var(--border);min-width:180px}
-        .form-row button{padding:.75rem 1rem;border-radius:10px;border:none;background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:white;font-weight:700}
-        [data-gumroad-follow-message]{display:none;margin-top:.75rem;padding:.75rem;border-radius:8px;background:linear-gradient(90deg,var(--primary),var(--secondary));color:white;text-align:center}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-        /* Products */
-        .products{padding:2.5rem 1rem}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-        .product{background:var(--surface);border:1px solid var(--border);padding:1rem;border-radius:14px;display:flex;flex-direction:column;gap:.5rem}
-        .product .emoji{font-size:2rem}
-        .product h4{margin:0}
-        .price{font-weight:800;color:var(--primary)}
-        .product .visit{margin-top:auto}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
 
-        /* About */
-        .about{padding:2.5rem 1rem;border-radius:12px;margin-top:1rem;background:linear-gradient(180deg,rgba(99,102,241,0.06),transparent)}
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-        footer{padding:2rem 1rem;text-align:center;color:var(--muted);border-top:1px solid var(--border);margin-top:2rem}
+        body.dark-mode .nav-links a {
+            color: var(--text-dark);
+        }
 
-        /* responsive tweaks */
-        @media (max-width:640px){.nav{padding:0 1rem}.container{padding:1rem}.hero{padding:2rem 0}}
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
+        .theme-toggle {
+            background: var(--bg-secondary-light);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: var(--bg-secondary-dark);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body.dark-mode .hero p {
+            color: var(--text-secondary-dark);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary-light);
+            color: var(--text-light);
+            border: 2px solid var(--primary);
+        }
+
+        body.dark-mode .btn-secondary {
+            background: var(--bg-secondary-dark);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Email Signup */
+        .email-signup {
+            background: linear-gradient(135deg, var(--bg-secondary-light), var(--border-light));
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body.dark-mode .email-signup {
+            background: linear-gradient(135deg, var(--bg-secondary-dark), var(--border-dark));
+        }
+
+        .email-signup h3 {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .email-signup h3 {
+            color: var(--text-dark);
+        }
+
+        .email-signup p {
+            color: var(--text-secondary-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .email-signup p {
+            color: var(--text-secondary-dark);
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .email-form input {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--bg-light);
+            color: var(--text-light);
+            transition: border-color 0.3s ease;
+        }
+
+        body.dark-mode .email-form input {
+            background: var(--bg-light);
+            border-color: var(--border-dark);
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .email-form button {
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .email-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        [data-gumroad-follow-message] {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Products Section */
+        .products {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body.dark-mode .section-subtitle {
+            color: var(--text-secondary-dark);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--bg-secondary-light);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark-mode .product-card {
+            background: var(--bg-secondary-dark);
+            border-color: var(--border-dark);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .product-title {
+            color: var(--text-dark);
+        }
+
+        .product-desc {
+            color: var(--text-secondary-light);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        body.dark-mode .product-desc {
+            color: var(--text-secondary-dark);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary-light);
+            padding: 4rem 2rem;
+        }
+
+        body.dark-mode .about {
+            background: var(--bg-secondary-dark);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        body.dark-mode .about-content p {
+            color: var(--text-secondary-dark);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border-light);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary-light);
+            margin-top: 4rem;
+        }
+
+        body.dark-mode footer {
+            background: var(--bg-secondary-dark);
+            border-top-color: var(--border-dark);
+            color: var(--text-secondary-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .products {
+                padding: 2rem 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
-<body data-theme="light">
+<body>
+    <!-- Header -->
     <header>
-        <div class="nav container">
-            <div class="brand">Pixel & Paper Studios</div>
-            <nav class="nav-links">
-                <a href="#products">Products</a>
-                <a href="#about">About</a>
-                <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">Pixel & Paper Studios</div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <section class="hero container" aria-labelledby="hero-title">
-            <h1 id="hero-title">Beautiful Assets for Creators</h1>
-            <p>Design templates, brushes, and guides handcrafted for illustrators and digital creators. All products live on our Gumroad — click to view product pages and learn more.</p>
-            <div class="cta">
-                <a class="btn btn-primary" href="https://gumroad.com/pixelandpaperstudios" target="_blank" rel="noopener">Visit Gumroad Profile</a>
-                <a class="btn btn-ghost" href="#email">Join Updates</a>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Creative Design & Digital Art</h1>
+        <p>Explore unique resources, templates, and artwork crafted for designers and creators. Bring your vision to life with our curated collection.</p>
+        <div class="hero-cta">
+            <a href="#products" class="btn btn-primary">Explore Products</a>
+            <a href="#email" class="btn btn-secondary">Stay Updated</a>
+        </div>
+    </section>
 
-        <section id="email" class="container">
-            <div class="card" role="region" aria-label="Join our email list">
-                <h3>Join our email list</h3>
-                <p style="margin:0 0 1rem;color:var(--muted)">Get product updates, discounts, and creative tips sent straight to your inbox.</p>
-                <form class="form-row" data-gumroad-follow>
-                    <input type="email" name="email" placeholder="you@domain.com" aria-label="Email address" required>
-                    <button type="submit">Subscribe</button>
-                    <div data-gumroad-follow-message>✨ Thanks — we'll be in touch!</div>
-                </form>
-            </div>
-        </section>
+    <!-- Email Signup -->
+    <div class="email-signup" id="email">
+        <h3>Join Our Creative Community</h3>
+        <p>Get exclusive updates, new releases, and creative tips delivered to your inbox.</p>
+        <form class="email-form" data-gumroad-follow>
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter your email" 
+                required
+                aria-label="Email address"
+            >
+            <button type="submit">Subscribe</button>
+            <div data-gumroad-follow-message>✨ Thank you for subscribing!</div>
+        </form>
+    </div>
 
-        <section id="products" class="products container">
-            <h2 style="text-align:center;margin-bottom:1rem">Featured products</h2>
-            <p style="text-align:center;color:var(--muted);max-width:720px;margin:0 auto 1.25rem">We replace checkout embeds with links to each Gumroad product page so visitors can view details and purchase on Gumroad.</p>
-            <div class="grid">
-                <article class="product">
-                    <div class="emoji">🎨</div>
-                    <h4>Design Templates</h4>
-                    <p style="margin:0;color:var(--muted)">Ready-to-use templates for social, presentations, and marketing — customize and ship faster.</p>
-                    <div class="price">$29</div>
-                    <a class="btn btn-primary visit" href="https://gumroad.com/l/your-design-templates" target="_blank" rel="noopener">View on Gumroad</a>
-                </article>
-
-                <article class="product">
-                    <div class="emoji">✏️</div>
-                    <h4>Digital Brushes Pack</h4>
-                    <p style="margin:0;color:var(--muted)">Brushes for Procreate &amp; Fresco with organic textures and pressure-aware dynamics.</p>
-                    <div class="price">$19</div>
-                    <a class="btn btn-primary visit" href="https://gumroad.com/l/your-brushes" target="_blank" rel="noopener">View on Gumroad</a>
-                </article>
-
-                <article class="product">
-                    <div class="emoji">📚</div>
-                    <h4>Creative Guide</h4>
-                    <p style="margin:0;color:var(--muted)">A practical guide to digital workflows, composition, and selling your art online.</p>
-                    <div class="price">$39</div>
-                    <a class="btn btn-primary visit" href="https://gumroad.com/l/your-creative-guide" target="_blank" rel="noopener">View on Gumroad</a>
-                </article>
-            </div>
-        </section>
-
-        <section id="about" class="about container">
-            <div style="max-width:760px;margin:0 auto;text-align:center">
-                <h3>About Pixel & Paper Studios</h3>
-                <p style="color:var(--muted)">We craft tools and resources for creators who want to move faster and create more expressive work. Visit product pages to see previews, demos, and full details.</p>
-                <div style="display:flex;gap:12px;justify-content:center;margin-top:1rem">
-                    <a href="https://twitter.com" aria-label="Twitter" style="text-decoration:none;padding:8px 12px;border-radius:8px;background:var(--primary);color:white">𝕏</a>
-                    <a href="https://instagram.com" aria-label="Instagram" style="text-decoration:none;padding:8px 12px;border-radius:8px;background:var(--secondary);color:white">📷</a>
-                    <a href="https://dribbble.com" aria-label="Dribbble" style="text-decoration:none;padding:8px 12px;border-radius:8px;background:#ea4c89;color:white">🎨</a>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Discover our collection of design resources, templates, and creative tools</p>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">🎨</div>
+                <div class="product-content">
+                    <h3 class="product-title">Design Templates</h3>
+                    <p class="product-desc">Professional design templates ready to customize. Perfect for social media, presentations, and marketing materials.</p>
+                    <p class="product-price">$29</p>
+                    <a href="https://pixelandpaperstudios.gumroad.com/l/pqqvn" target="_blank" class="btn btn-primary" rel="noopener">View on Gumroad</a>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <div>&copy; 2026 Pixel & Paper Studios</div>
-            <div style="margin-top:.25rem">Profile powered by <a href="https://gumroad.com" style="color:var(--primary);text-decoration:none">Gumroad</a></div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">✏️</div>
+                <div class="product-content">
+                    <h3 class="product-title">Digital Brushes Pack</h3>
+                    <p class="product-desc">Exclusive digital brushes for Procreate and Adobe Fresco. Create stunning artwork with our curated brush collection.</p>
+                    <p class="product-price">$19</p>
+                    <a href="https://pixelandpaperstudios.gumroad.com/l/monsters98" target="_blank" class="btn btn-primary" rel="noopener">View on Gumroad</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">📚</div>
+                <div class="product-content">
+                    <h3 class="product-title">Creative Guide</h3>
+                    <p class="product-desc">Comprehensive guide to digital design and illustration. Learn techniques, workflows, and industry best practices.</p>
+                    <p class="product-price">$39</p>
+                    <a href="https://gumroad.com/pixelandpaperstudios" target="_blank" class="btn btn-primary" rel="noopener">View on Gumroad</a>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Pixel & Paper Studios</h2>
+            <p>
+                Welcome to Pixel & Paper Studios, where creativity meets craftsmanship. We specialize in creating high-quality design resources and digital artwork for designers, illustrators, and cre[...]
+            </p>
+            <p>
+                Our mission is to empower creators with tools, resources, and inspiration to bring their artistic vision to life. Every product is carefully crafted with attention to detail and passio[...]
+            </p>
+            <div class="social-links">
+                <a href="https://twitter.com" class="social-link" aria-label="Twitter">𝕏</a>
+                <a href="https://instagram.com" class="social-link" aria-label="Instagram">📷</a>
+                <a href="https://dribbble.com" class="social-link" aria-label="Dribbble">🎨</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pixel & Paper Studios. All rights reserved.</p>
+        <p>Powered by <a href="https://gumroad.com" style="color: var(--primary); text-decoration: none;">Gumroad</a></p>
     </footer>
 
     <script>
-        // Theme handling: prefer saved -> system -> light
-        const root = document.documentElement;
-        const body = document.body;
-        const toggle = document.getElementById('themeToggle');
-        const saved = localStorage.getItem('pp-theme');
-        function applyTheme(theme){
-            body.setAttribute('data-theme', theme);
-            if(theme === 'dark') toggle.textContent = '☀️'; else toggle.textContent = '🌙';
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
         }
-        if(saved){ applyTheme(saved); }
-        else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ applyTheme('dark'); }
-        else applyTheme('light');
 
-        toggle.addEventListener('click', ()=>{
-            const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('pp-theme', next);
-            applyTheme(next);
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
         });
 
-        // Smooth anchor scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{
-            a.addEventListener('click', e=>{
-                const href = a.getAttribute('href');
-                if(href.startsWith('#') && href.length>1){
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
                     e.preventDefault();
-                    const targ = document.querySelector(href);
-                    if(targ) targ.scrollIntoView({behavior:'smooth',block:'start'});
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
-            })
-        });
-
-        // Gumroad follow forms: Gumroad automatically wires forms with data-gumroad-follow when hosted via pages.
-        // We show the follow message on submit to give instant feedback; Gumroad will also handle confirmation.
-        document.querySelectorAll('form[data-gumroad-follow]').forEach(form=>{
-            form.addEventListener('submit', e=>{
-                e.preventDefault();
-                const msg = form.querySelector('[data-gumroad-follow-message]');
-                if(msg){ msg.style.display='block'; }
-                // Let Gumroad JS handle the network subscription after preview/publish.
             });
         });
     </script>
