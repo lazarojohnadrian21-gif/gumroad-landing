@@ -1,0 +1,29 @@
+# InkBloom MaxPack — License
+
+InkBloom MaxPack License (Commercial Use, No Redistribution)
+
+Copyright (c) 2026 Pixel & Paper Studios (lazarojohnadrian21-gif)
+
+Grant of Rights
+- You (the buyer) are granted a perpetual, worldwide, non-exclusive license to use the InkBloom MaxPack assets (brushset, textures, shapes, and grain PNGs) to create digital artwork, derivative works, and finished assets for personal and commercial purposes.
+- You may use artworks created with the InkBloom MaxPack for client work, prints, digital products, assets sold as part of original artworks (for example: prints, posters, ebooks), and other commercial outputs.
+
+Restrictions
+- You MAY NOT redistribute, resell, sub-license, share, or repackage the raw assets (the .brushset, PNG grain/shape files, or canvas textures) in any form (including as part of another brush pack or texture pack). This includes posting the raw PNGs or .brushset for download on any public site or marketplace.
+- You MAY NOT claim the InkBloom MaxPack or its assets as your own creation.
+
+Exceptions
+- If you want to include any InkBloom assets inside a commercial product that itself permits redistribution (for example, bundling inside a course that shares files), you must obtain explicit written permission from Pixel & Paper Studios. Contact: lazarojohnadrian21@gmail.com
+
+Limited Liability
+- The assets are provided "as-is". Pixel & Paper Studios is not liable for any damages arising from the use of these assets.
+
+Attribution
+- Attribution is optional but appreciated: "Brushes: InkBloom MaxPack — Pixel & Paper Studios".
+
+Contact & Support
+- For licensing exceptions, extended commercial licensing, or bulk / team licensing, contact lazarojohnadrian21@gmail.com.
+
+---
+
+If you prefer a different license style (MIT-like permissive license, or a more restrictive license), tell me and I will update this file accordingly.
