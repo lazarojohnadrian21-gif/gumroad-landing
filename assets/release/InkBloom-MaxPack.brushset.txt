@@ -1,0 +1,7 @@
+This is a placeholder file representing the Procreate brushset export.
+
+When you have the final InkBloom-MaxPack.brushset, upload it to the branch at this path (replace this file):
+
+assets/release/InkBloom-MaxPack.brushset
+
+Until the final .brushset is provided, the packaged ZIP in the draft release will contain the placeholder assets and documentation.
